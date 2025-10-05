@@ -1,21 +1,93 @@
+"use client"
+
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
   return (
-    <div className="font-sans bg-background min-h-screen">
+    <div className="font-sans min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8 py-24 lg:py-32">
+        {/* Decorative circles */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <motion.div
+            className="absolute -top-20 -left-20 w-96 h-96 bg-green-400/15 rounded-full blur-[100px]"
+            animate={{
+              scale: [1, 1.2, 1],
+              x: [0, 20, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          ></motion.div>
+          <motion.div
+            className="absolute top-1/2 -right-32 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px]"
+            animate={{
+              scale: [1, 1.1, 1],
+              x: [0, -30, 0],
+              y: [0, 20, 0],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          ></motion.div>
+          <motion.div
+            className="absolute bottom-0 left-1/2 w-80 h-80 bg-teal-400/15 rounded-full blur-[100px]"
+            animate={{
+              scale: [1, 1.15, 1],
+              x: [0, -20, 0],
+              y: [0, -25, 0],
+            }}
+            transition={{
+              duration: 11,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          ></motion.div>
+        </div>
+        <div className="max-w-7xl mx-auto px-8 py-24 lg:py-32 relative">
           <div className="text-center space-y-8">
             <h1 className="text-5xl lg:text-6xl font-bold text-foreground">
-              Report. Track. Improve.
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >Report.</motion.span>{' '}
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >Track.</motion.span>{' '}
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >Improve.</motion.span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <motion.p
+              className="text-xl text-muted-foreground max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+            >
               Your community reporting platform. Help make your neighborhood better by reporting issues and tracking their resolution in real-time.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            </motion.p>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+            >
               <Link href="/map">
                 <Button size="lg" className="w-full sm:w-auto">
                   View Live Map
@@ -26,7 +98,7 @@ export default function HomePage() {
                 Submit a Report
               </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -34,55 +106,85 @@ export default function HomePage() {
       {/* Features Section */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-12">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-3xl font-bold text-foreground mb-4">How It Works</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Simple, effective community reporting in three easy steps
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card>
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl text-primary-foreground">📍</span>
-                </div>
-                <CardTitle>Report Issues</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Spot a problem? Report it instantly with our easy-to-use interface. Add photos, locations, and descriptions.
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            >
+              <Card>
+                <CardHeader>
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <span className="text-2xl text-primary-foreground">📍</span>
+                  </div>
+                  <CardTitle>Report Issues</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Spot a problem? Report it instantly with our easy-to-use interface. Add photos, locations, and descriptions.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card>
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl text-primary-foreground">🗺️</span>
-                </div>
-                <CardTitle>Track in Real-Time</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  View all reported issues on our interactive map. See what's happening in your community at a glance.
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            >
+              <Card>
+                <CardHeader>
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <span className="text-2xl text-primary-foreground">🗺️</span>
+                  </div>
+                  <CardTitle>Track in Real-Time</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    View all reported issues on our interactive map. See what's happening in your community at a glance.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card>
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-2xl text-primary-foreground">✅</span>
-                </div>
-                <CardTitle>Get Updates</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Stay informed as issues are addressed. Get notifications when your reports are updated or resolved.
-                </p>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            >
+              <Card>
+                <CardHeader>
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <span className="text-2xl text-primary-foreground">✅</span>
+                  </div>
+                  <CardTitle>Get Updates</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Stay informed as issues are addressed. Get notifications when your reports are updated or resolved.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           </div>
         </div>
       </section>

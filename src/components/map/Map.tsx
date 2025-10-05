@@ -59,12 +59,12 @@ export default function Map({ markers, center }: MapProps) {
       />
       {
       markers.map(function(marker, idx) {
-        
+
         console.log(marker.id, marker.position)
         return (
-          <Marker 
-            key={marker.id} 
-            position={marker.position}
+          <Marker
+            key={marker.id}
+            position={marker.position }
             eventHandlers={{
               click: (e) => {
                 setActiveMarker(marker);
