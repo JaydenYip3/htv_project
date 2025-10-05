@@ -10,5 +10,5 @@ export interface MarkerData {
   status: string
   timestamp: string
   address_id: number | null
-  address: { [key: string]: any }
+  address: { [key: string]: string | number | null }
 }

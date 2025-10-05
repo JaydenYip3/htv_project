@@ -158,7 +158,7 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    View all reported issues on our interactive map. See what's happening in your community at a glance.
+                    View all reported issues on our interactive map. See what&apos;s happening in your community at a glance.
                   </p>
                 </CardContent>
               </Card>

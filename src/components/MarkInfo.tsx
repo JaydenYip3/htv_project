@@ -39,7 +39,7 @@ export default function MapInfoPanel() {
     urgency: ""
   })
   const handleApplyFilters = () => {
-    let display: MarkerData[] = []
+    const display: MarkerData[] = []
     allMarkers.map((marker) => {
       const matchCategory = !filters.category || marker?.category === filters.category
       const matchStatus = !filters.status || marker?.status === filters.status

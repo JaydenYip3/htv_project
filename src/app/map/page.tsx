@@ -36,7 +36,7 @@ export function MapPage() {
       }
 
       fetchMarkers()
-    }, [setMarkers, setAllMarkers])
+    }, [setMarkers, setAllMarkers, setActiveMarker, activeMarker])
 
     if (!mounted || !markers) {
       return (

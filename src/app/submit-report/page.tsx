@@ -99,7 +99,7 @@ function LocationAutocomplete({
         const data = await res.json();
 
         const next =
-          (data?.features ?? []).map((f: any) => ({
+          (data?.features ?? []).map((f: { properties?: { place_id?: string; lat?: number; lon?: number; formatted?: string; country?: string; state?: string; street?: string; postcode?: string; city?: string } }) => ({
             id:
               f?.properties?.place_id ??
               `${f?.properties?.lat},${f?.properties?.lon}`,
@@ -115,8 +115,8 @@ function LocationAutocomplete({
 
         setItems(next);
         setError(null);
-      } catch (e: any) {
-        if (e?.name !== "AbortError") setError("Network error");
+      } catch (e: unknown) {
+        if (e instanceof Error && e.name !== "AbortError") setError("Network error");
         setItems([]);
       } finally {
         setLoading(false);
